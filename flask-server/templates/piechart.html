@@ -54,5 +54,38 @@
             chart.draw(data, options);
         }
     </script>
+    <!-- Add a new div for the bar chart -->
+<div id="barchart" style="width: 900px; height: 500px;"></div>
+
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawBarChart);
+
+    function drawBarChart() {
+        var emissionData = [
+            ['Category', 'Emissions'],
+            ['Car', {{ emission.car_emissions }}],
+            ['Two Wheeler', {{ emission.two_wheeler_emissions }}],
+            ['Air Travel', {{ emission.air_travel_emissions }}],
+            ['Electricity', {{ emission.electricity_emissions }}],
+            ['Diet', {{ emission.diet_emissions }}],
+            ['Waste', {{ emission.waste_emissions }}]
+        ];
+
+        // Create data table
+        var data = google.visualization.arrayToDataTable(emissionData);
+
+        // Set options for the bar chart
+        var options = {
+            title: 'Emissions Breakdown',
+            hAxis: {title: 'Emissions',  titleTextStyle: {color: '#333'}},
+            vAxis: {minValue: 0}
+        };
+
+        // Create a new instance of BarChart and draw the chart
+        var chart = new google.visualization.BarChart(document.getElementById('barchart'));
+        chart.draw(data, options);
+    }
+</script>
 </body>
 </html>

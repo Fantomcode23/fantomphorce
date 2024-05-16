@@ -3,6 +3,8 @@ from flask_login import login_user, current_user, LoginManager
 from models import User, Emission
 from database import db
 import os
+import sqlite3
+
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
@@ -54,13 +56,6 @@ global_averages = {
     "Waste": 0.235,
     "Diet": 1.3,
     "Electricity": 2
-}
-advice_messages = {
-    "FourWheeler": "Consider carpooling, using public transportation, or switching to an electric vehicle.",
-    "AirTravel": "Try to combine trips or use alternative modes of transportation whenever possible.",
-    "Waste": "Reduce waste by recycling, composting, and avoiding single-use plastics.",
-    "Diet": "Opt for a plant-based diet or reduce meat consumption to lower carbon emissions.",
-    "Electricity": "Use energy-efficient appliances, turn off lights when not in use, and consider renewable energy sources like solar panels."
 }
 
 
@@ -157,6 +152,22 @@ def piechart():
 @app.route('/advice')
 def advice():
     return render_template('advice.html')
+
+@app.route('/previous-values', methods=['GET'])
+def get_previous_values():
+    conn = sqlite3.connect('test.db')
+
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM Emission")
+
+    rows = cursor.fetchall()
+
+    previous_values = {row[0]: row[1] for row in rows}
+
+    conn.close()
+
+    return jsonify(previous_values)
 
 
 if __name__ == '__main__':
