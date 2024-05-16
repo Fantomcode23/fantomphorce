@@ -48,6 +48,22 @@ def signup():
 def calc():
     return render_template('calculator.html')
 
+global_averages = {
+    "FourWheeler": 4.7,
+    "AirTravel": 1.25,
+    "Waste": 0.235,
+    "Diet": 1.3,
+    "Electricity": 2
+}
+advice_messages = {
+    "FourWheeler": "Consider carpooling, using public transportation, or switching to an electric vehicle.",
+    "AirTravel": "Try to combine trips or use alternative modes of transportation whenever possible.",
+    "Waste": "Reduce waste by recycling, composting, and avoiding single-use plastics.",
+    "Diet": "Opt for a plant-based diet or reduce meat consumption to lower carbon emissions.",
+    "Electricity": "Use energy-efficient appliances, turn off lights when not in use, and consider renewable energy sources like solar panels."
+}
+
+
 FACTORS = {
     "US": {
     "Car": 0.19,
@@ -111,6 +127,7 @@ def calculate_emissions():
             )
             db.session.add(emission)
         db.session.commit()
+       
         return jsonify({
         'car_emissions': round(car_emissions / 1000, 2),
         'two_wheeler_emissions': round(two_wheeler_emissions / 1000, 2),
@@ -118,7 +135,8 @@ def calculate_emissions():
         'electricity_emissions': round(electricity_emissions / 1000, 2),
         'diet_emissions': round(diet_emissions / 1000, 2),
         'waste_emissions': round(waste_emissions / 1000, 2),
-        'total_emissions': round(total_emissions / 1000, 2)
+        'total_emissions': round(total_emissions / 1000, 2),
+
     })
     else:
         emission = Emission.query.filter_by(user_id=current_user.id).first()
@@ -127,6 +145,10 @@ def calculate_emissions():
             return render_template('calculate.html', emission=emission)
         else:
             return render_template('calculate.html')
+
+@app.route('/advice')
+def advice():
+    return render_template('advice.html')
 
 
 if __name__ == '__main__':

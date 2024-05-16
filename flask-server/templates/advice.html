@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARBON FORCE</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS styles can be added here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-4">Advice Dashboard</h1>
+        <div class="row">
+            <div class="col-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Select an Option:</h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#" class="btn btn-primary btn-block mb-2">Car Emissions</a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-primary btn-block mb-2">Two Wheeler Emissions</a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-primary btn-block mb-2">Air Travel Emissions</a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-primary btn-block mb-2">Electricity Usage</a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-primary btn-block mb-2">Diet Impact</a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-primary btn-block mb-2">Waste Generation</a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-primary btn-block mb-2">Total Emissions</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8" style="padding-right: 15px">
+                <!-- Content for selected option will be displayed here -->
+                <div id="selectedOptionContent" class="shadow p-3 mb-5 bg-body-tertiary rounded">
+                    <!-- Placeholder content -->
+                    <h5 class="text-center">Select an option to view details.</h5>
+                </div>
+                <!-- Input box for user message -->
+                <div id="userInput" style="display: none;">
+                    <input type="text" id="userMessage" class="form-control" placeholder="Type your message...">
+                    <button class="btn btn-primary mt-2" onclick="sendMessageToBotpress()">Send</button>
+                </div>
+                <!-- Botpress Webchat Integration -->
+                <div id="webchat"></div>
+                <script>
+                    window.onload = function () {
+                        WebChat.default.init({
+                            selector: '#webchat',
+                            initPayload: '/get_started', // Initial payload for the bot
+                            customData: {
+                                language: 'en' // Language preference
+                            },
+                            socketUrl: 'https://mediafiles.botpress.cloud/e4eab57e-c8f1-4ee4-ab59-47d252916cb0/webchat',
+                            socketPath: '/socket.io/',
+                            title: 'Carbon Force Bot',
+                            subtitle: 'AI Assistant',
+                            inputTextFieldHint: 'Type your message...',
+                            connectingText: 'Connecting to bot...',
+                            hideWhenNotConnected: true,
+                            fullScreenMode: false,
+                            profileAvatar: 'https://cdn.botpress.cloud/web/assets/mascot.png',
+                            openLauncherImage: 'https://cdn.botpress.cloud/web/assets/mascot.png',
+                            closeLauncherImage: 'https://cdn.botpress.cloud/web/assets/mascot.png',
+                            showCloseButton: true,
+                            persistOpen: false,
+                            enableSpeechRecognition: false,
+                            speechRecognitionLanguage: 'en',
+                            params: {
+                                storage: 'session' // Use session storage for chat history
+                            }
+                        });
+                    };
+
+                    // Function to show input box and hide button
+                    function showInput(option) {
+                        document.getElementById('selectedOptionContent').innerHTML = '<h5 class="text-center">' + option + ' Advice:</h5>';
+                        document.getElementById('userInput').style.display = 'block';
+                    }
+
+                    // Function to send message to Botpress Webchat
+                    function sendMessageToBotpress() {
+                        const userMessage = document.getElementById('userMessage').value;
+                        WebChat.default.sendMessage({
+                            text: userMessage
+                        });
+                        document.getElementById('userMessage').value = ''; // Clear the input after sending message
+                    }
+                </script>
+                <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    
+</body>
+</html>
