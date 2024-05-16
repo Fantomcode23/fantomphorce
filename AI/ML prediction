@@ -1,0 +1,30 @@
+import torch
+import joblib
+
+# Load the saved Random Forest Regression model
+rf_regressor = joblib.load('newpicklefile1.pkl')
+recommend_list=[]
+def preprocess_data(distance, mileage, v_type):
+    # Convert user input to PyTorch tensors
+    sample_tensor = torch.tensor([[distance, mileage, v_type]], dtype=torch.float32)
+    return sample_tensor
+
+def generate_recommendations(count,distance, mileage, v_type):
+    # Preprocess the user input
+    sample_tensor = preprocess_data(distance, mileage, v_type)
+    # Make predictions using the loaded model
+    prediction = rf_regressor.predict(sample_tensor.numpy())
+    recommend_list.append([prediction,count])
+
+# Get user input
+n=int(input("Enter number of routes: "))
+count=0
+for i in range(n):
+    count+=1
+    distance = float(input("Enter distance: "))
+    mileage = float(input("Enter mileage of vehicle: "))
+    v_type = float(input("Enter vehicle type (2 or 4): "))
+    generate_recommendations(count,distance, mileage, v_type)
+recommend_list.sort()
+for i in recommend_list:
+    print(i[1],"\t",i[0])
