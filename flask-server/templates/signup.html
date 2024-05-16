@@ -95,13 +95,23 @@
 
 <body style="background-image: url('{{ url_for('static', filename='images/tree.jpg') }}');">
   <div class="login-container">
-    <h2>Change Password</h2>
+    <h2>Sign Up</h2>
       <form action="http://localhost:5000/signup" method="post">
       
       <div class="form-group">
         <label for="username">Username:</label>
         <input type="email" id="email" name="username" required>
       </div>
+      <div id="verification-code-container" style="display: none;">
+        <label for="verification_code">Verification Code:</label>
+        <input type="text" id="verification_code" name="verification_code" required>
+      </div>
+      <br>
+      <br>
+      <button type="button" id="verify-code-button" class="login-button">Verify Code (OTP)</button><br>
+      <br>
+      <button type="button" id="authenticate-button" class="login-button" style="display: none;">Authenticate Code</button>
+      
       <div class="form-group" id="new-password-group" >
         <label for="new_password">New Password:</label>
         <input type="password" id="new_password" name="new_password" required>
@@ -111,10 +121,12 @@
         <input type="password" id="confirm_password" name="confirm_password" required>
       </div><br>
       <br>
-      <div class="form-group" id="submit-group" >
+      <div class="form-group" id="submit-group" style="display:none;">
         <input type="submit" value="Submit" name="submit" class="login-button" style="width: 23%;"/>
+        <div class="tooltip" id="tooltip-submit">Verify using auth code</div>      
       </div><br>
     </form>
   </div>
+  <script src="../static/js/indexes.js"></script>
 </body>
 </html>
