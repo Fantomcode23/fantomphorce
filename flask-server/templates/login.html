@@ -9,7 +9,6 @@
     body {
     font-family: Arial, sans-serif;
     background-color: #e3f1ff;
-    background: url('static\img\tree.jpg') center center fixed; 
     background-size: cover;
     margin: 0;
     padding: 0;
@@ -75,7 +74,7 @@
   
 </style>
 
-<body>
+<body style="background-image: url('{{ url_for('static', filename='images/tree.jpg') }}');">
 
 <div class="login-container">
   <h2>Login</h2>

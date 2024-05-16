@@ -50,7 +50,7 @@
       h1 {
         text-align: center;
         color: whitesmoke;
-        margin: 0; /* Remove default margin */
+        margin: 0; 
       }
 
       img.logo {
@@ -131,9 +131,9 @@
               Login
             </button>
             <button
-            onclick="redirectToRegister()"
+            onclick="redirectToSignup()"
               class="header_button">
-              Reset
+              Sign Up
             </button>
           </div>
         </nav>
@@ -232,8 +232,8 @@
             window.location.href = 'login'; 
         }
 
-        function redirectToRegister() {
-            window.location.href = 'register'; 
+        function redirectToSignup() {
+            window.location.href = 'signup'; 
         }
     </script>
     <script

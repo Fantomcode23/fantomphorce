@@ -1,89 +1,226 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Emissions Calculator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emission Calculator</title>
   <style>
-    /* Add your CSS styles here */
+    body {
+        font-family: Arial, sans-serif;
+        background-color:  lightgreen;;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        overflow-y: auto; 
+    }
+    .card {
+      width: 40rem;
+      margin: 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 16px;
+    }
+    .form-container {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .form-group label {
+      margin-right: 10px;
+      font-weight: bold;
+      flex: 1;
+    }
+    .form-group input[type="number"], .form-group input[type="range"], .form-group input[type="text"] {
+      flex: 2;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+    .form-group input[type="range"] {
+      margin-top: 8px;
+    }
+    #calculate {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 16px;
+    }
+    #calculate:hover {
+      background-color: #218838;
+    }
   </style>
 </head>
-<body>
-  <div id="app">
-    <header>
-      <div>
-        <label>Country: </label>
+<body class="p-3 mb-2 bg-success-subtle text-emphasis-success">
+  <nav class="navbar fixed-top bg-body-tertiary" style = "padding: 0px; background-color: rgb(255, 255, 255); color: black !important;">
+    <p class="navbar-brand" href="#" style = "padding: 0px; margin: 0px; margin-top: 5px; margin-bottom: 5px; font-size: xx-large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+      PHANTOM CARBON
+    </p>
+  </nav>
+  <div class="card">
+    <div class="form-container">
+      <div class="card mb-3" style="width: 35rem; margin-right: 10px;margin-left: 10px;">
+        <div class="form-group" >
+        <label for="country">Country: </label>
         <input id="country" type="text" value="India" />
+        </div>
       </div>
-      <div>
-        <label>Car Distance (km/day): </label>
+      <div class="card mb-3" style="width: 35rem; margin-right: 10px;margin-left: 10px;">
+      <div class="form-group">
+        <label for="car_distance">Car Distance (km/day): </label>
         <input id="car_distance" type="number" value="0" />
+        <input id="car_distance_slider" type="range" min="0" max="80" value="0" />
       </div>
-      <div>
-        <label>Two Wheeler Distance (km/day): </label>
+    </div>
+      <div class="card mb-3" style="width: 35rem; margin-right: 10px;margin-left: 10px;">
+      <div class="form-group">
+        <label for="two_wheeler_distance">Two Wheeler Distance (km/day): </label>
         <input id="two_wheeler_distance" type="number" value="0" />
+        <input id="two_wheeler_distance_slider" type="range" min="0" max="80" value="0" />
       </div>
-      <div>
-        <label>Air Travel Distance (km/year): </label>
+    </div>
+      <div class="card mb-3" style="width: 35rem; margin-right: 10px;margin-left: 10px;">
+      <div class="form-group">
+        <label for="air_travel_distance">Air Travel Distance (km/year): </label>
         <input id="air_travel_distance" type="number" value="0" />
+        <input id="air_travel_distance_slider" type="range" min="0" max="50000" value="0" />
       </div>
-      <div>
-        <label>Electricity (kWh/month): </label>
+    </div>
+      <div class="card mb-3" style="width: 35rem; margin-right: 10px;margin-left: 10px;">
+      <div class="form-group">
+        <label for="electricity">Electricity (kWh/month): </label>
         <input id="electricity" type="number" value="0" />
+        <input id="electricity_slider" type="range" min="0" max="1000" value="0" />
       </div>
-      <div>
-        <label>Meals (meat meals/day): </label>
+      </div>
+      <div class="card mb-3" style="width: 35rem; margin-right: 10px;margin-left: 10px;">
+      <div class="form-group">
+        <label for="meals">Meals (Avg meals/day): </label>
         <input id="meals" type="number" value="0" />
+        <input id="meals_slider" type="range" min="0" max="10" value="0" />
       </div>
-      <div>
-        <label>Waste (kg/week): </label>
+    </div>
+      <div class="card mb-3" style="width: 35rem; margin-right: 10px;margin-left: 10px;">
+      <div class="form-group">
+        <label for="waste">Waste (kg/week): </label>
         <input id="waste" type="number" value="0" />
+        <input id="waste_slider" type="range" min="0" max="20" value="0" />
       </div>
-      <div>
-        <button id="calculate">Calculate Emissions</button>
-      </div>
+    </div>
+      <button id="calculate">Calculate Emissions</button>
       <div id="emissions"></div>
-    </header>
+    </div>
   </div>
-
+  </div>
   <script>
-document.getElementById('calculate').addEventListener('click', function() {
-  var country = document.getElementById('country').value;
-  var car_distance = document.getElementById('car_distance').value;
-  var two_wheeler_distance = document.getElementById('two_wheeler_distance').value;
-  var air_travel_distance = document.getElementById('air_travel_distance').value;
-  var electricity = document.getElementById('electricity').value;
-  var meals = document.getElementById('meals').value;
-  var waste = document.getElementById('waste').value;
+     const synchronizeInput = (inputId, sliderId) => {
+      const input = document.getElementById(inputId);
+      const slider = document.getElementById(sliderId);
 
-  fetch('/calculate', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      country: country,
-      car_distance: car_distance,
-      two_wheeler_distance: two_wheeler_distance,
-      air_travel_distance: air_travel_distance,
-      electricity: electricity,
-      meals: meals,
-      waste: waste
-    }),
-  })
-  .then(response => response.json())
-  .then(emissions => {
-    var emissionsDiv = document.getElementById('emissions');
-    emissionsDiv.innerHTML = '';
-    Object.entries(emissions).sort(function(a, b) {
-      if (a[0] === 'total_emissions') return 1;
-      if (b[0] === 'total_emissions') return -1;
-      return 0;
-    }).forEach(function([key, value]) {
-      var p = document.createElement('p');
-      p.textContent = key + ': ' + value + ' tCO2e or Tons of carbon dioxide';
-      emissionsDiv.appendChild(p);
+      input.addEventListener('input', () => {
+        slider.value = input.value;
+      });
+
+      slider.addEventListener('input', () => {
+        input.value = slider.value;
+      });
+    };
+
+    synchronizeInput('car_distance', 'car_distance_slider');
+    synchronizeInput('two_wheeler_distance', 'two_wheeler_distance_slider');
+    synchronizeInput('air_travel_distance', 'air_travel_distance_slider');
+    synchronizeInput('electricity', 'electricity_slider');
+    synchronizeInput('meals', 'meals_slider');
+    synchronizeInput('waste', 'waste_slider');
+
+    var previousValues = {
+      country: 'India',
+      car_distance: 0,
+      two_wheeler_distance: 0,
+      air_travel_distance: 0,
+      electricity: 0,
+      meals: 0,
+      waste: 0
+    };
+    
+    document.getElementById('calculate').addEventListener('click', function() {
+      var country = document.getElementById('country').value;
+      var car_distance = document.getElementById('car_distance').value;
+      var two_wheeler_distance = document.getElementById('two_wheeler_distance').value;
+      var air_travel_distance = document.getElementById('air_travel_distance').value;
+      var electricity = document.getElementById('electricity').value;
+      var meals = document.getElementById('meals').value;
+      var waste = document.getElementById('waste').value;
+    
+      previousValues = {
+        country: country,
+        car_distance: car_distance,
+        two_wheeler_distance: two_wheeler_distance,
+        air_travel_distance: air_travel_distance,
+        electricity: electricity,
+        meals: meals,
+        waste: waste
+      };
+    
+      fetch('/calculate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(previousValues),
+      })
+      .then(response => response.json())
+      .then(emissions => {
+        var emissionsDiv = document.getElementById('emissions');
+        emissionsDiv.innerHTML = '';
+        Object.entries(emissions).sort(function(a, b) {
+          if (a[0] === 'total_emissions') return 1;
+          if (b[0] === 'total_emissions') return -1;
+          return 0;
+        }).forEach(function([key, value]) {
+          var p = document.createElement('p');
+          p.textContent = key + ': ' + value + ' tCO2e or Tons of carbon dioxide';
+          emissionsDiv.appendChild(p);
+        });
+      });
     });
-  });
-});
-  </script>
+    
+    window.addEventListener('load', function() {
+      document.getElementById('country').value = previousValues.country;
+      document.getElementById('car_distance').value = previousValues.car_distance;
+      document.getElementById('two_wheeler_distance').value = previousValues.two_wheeler_distance;
+      document.getElementById('air_travel_distance').value = previousValues.air_travel_distance;
+      document.getElementById('electricity').value = previousValues.electricity;
+      document.getElementById('meals').value = previousValues.meals;
+      document.getElementById('waste').value = previousValues.waste;
+    });
+    const emissions = `
+        Car Distance: ${document.getElementById('car_distance').value} km/day
+        Two Wheeler Distance: ${document.getElementById('two_wheeler_distance').value} km/day
+        Air Travel Distance: ${document.getElementById('air_travel_distance').value} km/year
+        Electricity: ${document.getElementById('electricity').value} kWh/month
+        Meals: ${document.getElementById('meals').value} meat meals/day
+        Waste: ${document.getElementById('waste').value} kg/week
+      `;
+      document.getElementById('emissions').innerText = emissions;
+    </script>
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/e4eab57e-c8f1-4ee4-ab59-47d252916cb0/webchat/config.js" defer></script>
 </body>
 </html>
