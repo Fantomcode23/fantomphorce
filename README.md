@@ -1,16 +1,16 @@
- # **Phantom Carbon**
-Phantom Carbon is an all in one carbon emission tracking app built that helps individuals calculate
-their carbon emissions based one 3 aspects- transportation, utilities, and internet usage. 
-It includes a chatbot that answers questions and can make reccomendations to users which route to 
-use, it does so through a machine learning model with random forest regression.
-It uses flask on the backend, and sqllite for dbms, along with RESTful API. Botpress was used to 
+ # **Combat Carbon**
+Combat Carbon is an all-in-one carbon emission tracking web application built that helps individuals calculate
+their carbon emissions based on aspects like transportation, utilities, etc.
+It includes a chatbot that answers questions and can make reccomendations to users on which route to 
+use, it does so through a machine learning model utlising random forest regression.
+It uses flask on the backend, and SQLite for database, along with RESTful API. Botpress was used to 
 make the bots to include generative AI features integrated with the ML model.
 
 # **What are we trying to solve?**
 Global warming is a direct problem and climate change too. Recent heat waves in Bengaluru made 
-us think about climate change and its impact. Hence, we decided to build a emission tracker 
+us deeply think about climate change and its impact. Hence, we decided to build a emission tracker 
 that tracks carbon emissions and in turn helps us reduce our emissions and do our bit to 
-fight climate change.
+fight climate change. The main idea is that tracking can lead to more mindful consumption.
 
 # Technology Stack 
 ## Web application
@@ -43,17 +43,24 @@ fight climate change.
 - Lack of one-stop solution
 
 # Solution
-this is how our apploication solves the problem and also the lack of existing solutions
+
 
 # Working and features
-These are the features available on our application 
+- Sign in with user authentication using email OTP 
+- Dashboard showing emission calculator which calculates total carbon emissions
+- Graphical representation of the calculated emissions with respective categories
+- ChatBot answering the user's questions
+- Machine Learning model using Random Forest Regression model to predict emissions based on transport routes
+- Database stores the entered user data for future usage
 
+  
 # We ran into the following challenges
 - Finding suitable dataset and problems training ML model appropriately.
 - Integrating flask and the AI powered ML recomendation engine.
 
 # Scope for further enhancements
-Here's what we can do improve our application.
+- Improve UI
+- Introduce points based system to encourage users to stay motivated
 
 # Team
  ## [Karthik Prakash](https://github.com/kart2004)
