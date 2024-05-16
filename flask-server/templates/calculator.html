@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Emissions Calculator</title>
+  <style>
+    /* Add your CSS styles here */
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div>
+        <label>Country: </label>
+        <input id="country" type="text" value="India" />
+      </div>
+      <div>
+        <label>Car Distance (km/day): </label>
+        <input id="car_distance" type="number" value="0" />
+      </div>
+      <div>
+        <label>Two Wheeler Distance (km/day): </label>
+        <input id="two_wheeler_distance" type="number" value="0" />
+      </div>
+      <div>
+        <label>Air Travel Distance (km/year): </label>
+        <input id="air_travel_distance" type="number" value="0" />
+      </div>
+      <div>
+        <label>Electricity (kWh/month): </label>
+        <input id="electricity" type="number" value="0" />
+      </div>
+      <div>
+        <label>Meals (meat meals/day): </label>
+        <input id="meals" type="number" value="0" />
+      </div>
+      <div>
+        <label>Waste (kg/week): </label>
+        <input id="waste" type="number" value="0" />
+      </div>
+      <div>
+        <button id="calculate">Calculate Emissions</button>
+      </div>
+      <div id="emissions"></div>
+    </header>
+  </div>
+
+  <script>
+document.getElementById('calculate').addEventListener('click', function() {
+  var country = document.getElementById('country').value;
+  var car_distance = document.getElementById('car_distance').value;
+  var two_wheeler_distance = document.getElementById('two_wheeler_distance').value;
+  var air_travel_distance = document.getElementById('air_travel_distance').value;
+  var electricity = document.getElementById('electricity').value;
+  var meals = document.getElementById('meals').value;
+  var waste = document.getElementById('waste').value;
+
+  fetch('/calculate', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      country: country,
+      car_distance: car_distance,
+      two_wheeler_distance: two_wheeler_distance,
+      air_travel_distance: air_travel_distance,
+      electricity: electricity,
+      meals: meals,
+      waste: waste
+    }),
+  })
+  .then(response => response.json())
+  .then(emissions => {
+    var emissionsDiv = document.getElementById('emissions');
+    emissionsDiv.innerHTML = '';
+    Object.entries(emissions).sort(function(a, b) {
+      if (a[0] === 'total_emissions') return 1;
+      if (b[0] === 'total_emissions') return -1;
+      return 0;
+    }).forEach(function([key, value]) {
+      var p = document.createElement('p');
+      p.textContent = key + ': ' + value + ' tCO2e or Tons of carbon dioxide';
+      emissionsDiv.appendChild(p);
+    });
+  });
+});
+  </script>
+</body>
+</html>

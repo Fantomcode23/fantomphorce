@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> PHANTOM CARBON </title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        width: 100%;
+        height: 100%;
+        background: rgb(5, 67, 71);
+        color: azure;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        color: white;
+        background-color: rgb(1, 27, 29);
+        width: 146%;
+      }
+
+      .header_button {
+        margin-left: 5px;
+        padding: 8px 16px;
+        font-size: 16px;
+        float: right;
+        background-color: rgb(174, 235, 233); 
+        font-weight: bold;
+        margin: 10px;
+        border-radius: 8px;
+      }
+      .header_button:hover {
+        background-color: rgb(40, 200, 194); 
+
+      }
+
+      h1 {
+        text-align: center;
+        color: whitesmoke;
+        margin: 0; /* Remove default margin */
+      }
+
+      img.logo {
+        height: 70px;
+        width: 70px;
+        float: left;
+      }
+
+      .card_img{
+        height:150px;
+        width:100%;
+      }
+
+      div [class^="col-"]{
+        padding-left:5px;
+        padding-right:5px;
+      }
+      .card{
+        transition:0.5s;
+        cursor:pointer;
+      }
+      .card-title{  
+        font-size:15px;
+        transition:1s;
+        cursor:pointer;
+      }
+      .card-title i{  
+        font-size:15px;
+        transition:1s;
+        cursor:pointer;
+        color:#ffa710
+      }
+      .card-title i:hover{
+        transform: scale(1.25) rotate(100deg); 
+        color:#18d4ca;
+        
+      }
+      .card:hover{
+        transform: scale(1.05);
+        box-shadow: 10px 10px 15px rgba(0,0,0,0.3);
+      }
+      .card-text{
+        height:80px;  
+      }
+
+      .card::before, .card::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: scale3d(0, 0, 1);
+        transition: transform .3s ease-out 0s;
+        background: rgba(255, 255, 255, 0.1);
+        content: '';
+        pointer-events: none;
+      }
+      .card::before {
+        transform-origin: left top;
+      }
+      .card::after {
+        transform-origin: right bottom;
+      }
+      .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
+        transform: scale3d(1, 1, 1);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="particles-js" style="box-sizing: content-box">
+      <div style="position: absolute; z-index: 1000">
+        <nav class="navbar fixed-top bg-body-tertiary" style = "padding: 0px; background-color: rgb(255, 255, 255); color: black !important;">
+          <p class="navbar-brand" href="#" style = "padding: 0px; margin: 0px; margin-top: 5px; margin-bottom: 5px; font-size: xx-large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+            PHANTOM CARBON
+          </p>
+          <div>
+            <button onclick="redirectToLogin()" class="header_button">
+              Login
+            </button>
+            <button
+            onclick="redirectToRegister()"
+              class="header_button">
+              Reset
+            </button>
+          </div>
+        </nav>
+
+          <div style = "margin: 100px 350px;"
+            id="carouselExampleIndicators"
+            class="carousel slide"
+            data-ride="carousel"
+            style="width: 90.35%; align-self: center; align-items: center; align-content: center;"
+            
+            >
+            <ol class="carousel-indicators">
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="0"
+                class="active"
+              ></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+  
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  class="d-block w-100"
+                  src="./rvgg.jpg"
+                  alt="First slide"
+                  style="width: 640px; height: 360px"
+                />
+              </div>
+  
+              <div class="carousel-item">
+                <img
+                  class="d-block w-100"
+                  src="./admin.jpg"
+                  alt="Second slide"
+                  style="width: 640px; height: 360px"
+                />
+              </div>
+  
+              <div class="carousel-item">
+                <img
+                  class="d-block w-100"
+                  src="./nirf.jpeg"
+                  alt="Third slide"
+                  style="width: 640px; height: 360px"
+                />
+              </div>
+            </div>
+          </div>
+       
+        <div class="container mt-2">
+          
+            <div class="row" style = "color: black; margin-bottom: 10%;">
+              <div class="col-md-3 col-sm-6" style = "padding: 10px;">
+                <div class="card card-block">
+                
+              <img class = "card_img" src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset">
+                  <h5 class="card-title mt-3 mb-3" >Real-time Carbon Emissions Tracking</h5>
+                  <p class="card-text">Enables live monitoring and recording of individual carbon emissions.</p> 
+            </div>
+              </div>
+              <div class="col-md-3 col-sm-6" style = "padding: 10px;">
+                <div class="card card-block">
+                
+              <img class = "card_img" src="https://static.pexels.com/photos/7357/startup-photos.jpg" alt="Photo of sunset">
+                  <h5 class="card-title  mt-3 mb-3">Corporate Social Responsibility:</h5>
+                  <p class="card-text">Provides benefits to companies which want to go green.</p> 
+            </div>
+              </div>
+              <div class="col-md-3 col-sm-6" style = "padding: 10px;">
+                <div class="card card-block">
+                
+              <img class = "card_img" src="https://static.pexels.com/photos/262550/pexels-photo-262550.jpeg" alt="Photo of sunset">
+                  <h5 class="card-title  mt-3 mb-3"> Self-Service Portal:</h5>
+                  <p class="card-text">Individuals can track their own progress and take responsibility for their emissions.</p> 
+            </div>
+              </div>
+              <div class="col-md-3 col-sm-6" style = "padding: 10px;">
+                <div class="card card-block">
+                
+              <img class = "card_img" src="https://static.pexels.com/photos/326424/pexels-photo-326424.jpeg" alt="Photo of sunset">
+                  <h5 class="card-title  mt-3 mb-3">Integration with other Systems:</h5>
+                  <p class="card-text">Seamlessly integrates with other green systems, such as carbon offset management and carbon pricing.</p> 
+            </div>
+              </div>    
+            </div>
+            
+          </div>
+          
+
+      </div>
+    </div>
+    <script>
+        function redirectToLogin() {
+            window.location.href = 'login'; 
+        }
+
+        function redirectToRegister() {
+            window.location.href = 'register'; 
+        }
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1561436720/particles.js"></script>
+    <script src="https://res.cloudinary.com/dxfq3iotg/raw/upload/v1561436735/app.js"></script>
+  </body>
+</html>
