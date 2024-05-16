@@ -146,6 +146,14 @@ def calculate_emissions():
         else:
             return render_template('calculate.html')
 
+@app.route('/emissionpiechart')
+def piechart():
+    emission = Emission.query.filter_by(user_id=current_user.id).first()
+    if emission:
+        return render_template('piechart.html', emission=emission)
+    else:
+        return 'Emission data not found.'
+
 @app.route('/advice')
 def advice():
     return render_template('advice.html')
