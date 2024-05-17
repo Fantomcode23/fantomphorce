@@ -117,11 +117,30 @@
       .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
         transform: scale3d(1, 1, 1)
       }
+      .navbar-brand {
+            font-size: xxx-large;
+            font-style: italic;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            width: 100%;
+            margin: 0;
+            padding: 10px 0;
+        }                                                                   
+        .dashboard-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
     
     </style>
   </head>
   <body>
-     
+    <nav class="navbar fixed-top bg-body-tertiary" style="padding: 0px; background-color: rgb(233, 231, 223); color: black !important;">
+      <p class="navbar-brand" href="#">
+          Combat Carbon
+      </p>
+  </nav>
     <div id="particles-js" style="box-sizing: content-box">
       <div style="position: absolute; z-index: 1000">
         <nav class="navbar fixed-top bg-body-tertiary" style = "padding: 0px; background-color: rgb(233, 231, 223); color: black !important;">
