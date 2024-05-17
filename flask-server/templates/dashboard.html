@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .navbar-brand {
+            font-size: xxx-large;
+            font-style: italic;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            width: 100%;
+            margin: 0;
+            padding: 10px 0;
+        }
+        .dashboard-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar fixed-top bg-body-tertiary" style="padding: 0px; background-color: rgb(233, 231, 223); color: black !important;">
+        <p class="navbar-brand" href="#">
+            Combat Carbon
+        </p>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="dashboard-title">Dashboard</div>
+        <div class="row row-cols-3" style="padding-left: 2%;">
+            <div class="col mb-4">
+                <div class="card shadow bg-body-tertiary rounded" style="width: 18rem; margin-right: 10px;margin-left: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Calculator</h5>
+                        <p class="card-text">Calculate your emissions.</p>
+                        <a href="{{ url_for('calc') }}" class="btn btn-outline-success">Open Calculator</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card shadow bg-body-tertiary rounded" style="width: 18rem; margin-right: 10px;margin-left: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Visualization</h5>
+                        <p class="card-text">View emission data.</p>
+                        <a href="{{ url_for('piechart') }}" class="btn btn-outline-success">View Visualization</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card shadow bg-body-tertiary rounded" style="width: 18rem; margin-right: 10px;margin-left: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Advice</h5>
+                        <p class="card-text">Get advice to reduce emissions.</p>
+                        <a href="{{ url_for('advice') }}" class="btn btn-outline-success">Get Advice</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card shadow bg-body-tertiary rounded" style="width: 18rem; margin-right: 10px;margin-left: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">ML Prediction</h5>
+                        <p class="card-text">Predict emissions for routes.</p>
+                        <a href="{{ url_for('mlprediction') }}" class="btn btn-outline-success">Predict Emissions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
