@@ -4,7 +4,6 @@ from models import User, Emission
 from database import db
 import os
 import sqlite3
-from MLprediction import generate_recommendations, recommend_list
 import joblib
 import numpy as np
 
