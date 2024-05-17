@@ -42,16 +42,6 @@ def login():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        user = User(username=request.form['username']).first()
-        if user is None or not user.check_password(request.form['password']):
-            return 'Invalid username or password'
-        login_user(user)
-        return render_template('calculator.html')
-    return render_template('login.html')
-
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if request.method == 'POST':
         user = User(username=request.form['username'])
         user.set_password(request.form['new_password'])
         db.session.add(user)
@@ -84,7 +74,7 @@ FACTORS = {
     "India": {
         "Car": 0.116,
         "TwoWheeler": 0.041,
-"AirTravel": 0.115,
+        "AirTravel": 0.115,
         "Electricity": 0.82,
         "Diet": 1.25,
         "Waste": 0.1
@@ -219,7 +209,7 @@ def process_and_sort_routes(routes_data):
         generate_recommendations(count, distance, mileage, v_type)
     sorted_routes = sorted(recommend_list, key=lambda x: x[0])
     return sorted_routes
-
+    
 rf_regressor = joblib.load('newpicklefile1.pkl')
 recommend_list = []
 
