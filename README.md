@@ -5,6 +5,9 @@ It includes a chatbot that answers questions and can make reccomendations to use
 use, it does so through a machine learning model utlising random forest regression.
 It uses flask on the backend, and SQLite for database, along with RESTful API. Botpress was used to 
 make the bots to include generative AI features integrated with the ML model.
+**This project was created at FantomCode 2024 held in RV Institute of Technology and Management.**
+
+
 <img width="950" alt="Screenshot 2024-05-17 at 4 04 41 AM" src="https://github.com/Fantomcode23/fantomphorce/assets/132202476/5df6b4dc-cade-4830-935f-265849fe25d0">
 
 # **What are we trying to solve?**
