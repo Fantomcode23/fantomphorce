@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
-from flask_login import login_user, current_user, LoginManager
+from flask_login import login_user, current_user, LoginManager, login_required
 from models import User, Emission
 from database import db
 import os
@@ -36,7 +36,7 @@ def login():
         if user is None or not user.check_password(request.form['password']):
             return 'Invalid username or password'
         login_user(user)
-        return render_template('calculator.html')
+        return redirect(url_for('dashboard'))
     return render_template('login.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -48,6 +48,11 @@ def signup():
         db.session.commit()
         return render_template('login.html')
     return render_template('signup.html')
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('dashboard.html')
 
 @app.route('/calc')
 def calc():
@@ -209,7 +214,8 @@ def process_and_sort_routes(routes_data):
         generate_recommendations(count, distance, mileage, v_type)
     sorted_routes = sorted(recommend_list, key=lambda x: x[0])
     return sorted_routes
-    
+
+# Load the trained model
 rf_regressor = joblib.load('newpicklefile1.pkl')
 recommend_list = []
 
