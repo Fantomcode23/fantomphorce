@@ -4,6 +4,9 @@ from models import User, Emission
 from database import db
 import os
 import sqlite3
+from MLprediction import generate_recommendations, recommend_list
+import joblib
+import numpy as np
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -30,6 +33,16 @@ def home():
 def login():
     if request.method == 'POST':
         user = User.query.filter_by(username=request.form['username']).first()
+        if user is None or not user.check_password(request.form['password']):
+            return 'Invalid username or password'
+        login_user(user)
+        return render_template('calculator.html')
+    return render_template('login.html')
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        user = User(username=request.form['username']).first()
         if user is None or not user.check_password(request.form['password']):
             return 'Invalid username or password'
         login_user(user)
@@ -71,7 +84,7 @@ FACTORS = {
     "India": {
         "Car": 0.116,
         "TwoWheeler": 0.041,
-        "AirTravel": 0.115,
+"AirTravel": 0.115,
         "Electricity": 0.82,
         "Diet": 1.25,
         "Waste": 0.1
@@ -168,6 +181,47 @@ def get_previous_values():
     conn.close()
 
     return jsonify(previous_values)
+
+@app.route('/mlprediction')
+def mlprediction():
+    return render_template('mlprediction.html')
+
+@app.route('/ml_emissions', methods=['POST'])
+def process_routes():
+    num_routes = int(request.json.get('num_routes'))
+    routes_data = []
+    for i in range(num_routes):
+        distance = float(request.json.get(f'distance_{i}'))
+        mileage = float(request.json.get(f'mileage_{i}'))
+        v_type = int(request.json.get(f'v_type_{i}'))
+        routes_data.append((distance, mileage, v_type))
+    sorted_routes = process_and_sort_routes(routes_data)
+    return jsonify(sorted_routes)
+
+def preprocess_data(distance, mileage, v_type):
+    v_type_4 = 1 if v_type == 4 else 0
+    sample = np.array([[mileage, distance, v_type_4]])
+    return sample
+
+def generate_recommendations(count, distance, mileage, v_type):
+    sample = preprocess_data(distance, mileage, v_type)
+    prediction = rf_regressor.predict(sample)[0]
+
+    perturbation = (distance) + (10 / mileage)
+    adjusted_prediction = prediction + perturbation
+    
+    recommend_list.append((adjusted_prediction, count))
+
+def process_and_sort_routes(routes_data):
+    global recommend_list
+    recommend_list = []
+    for count, (distance, mileage, v_type) in enumerate(routes_data):
+        generate_recommendations(count, distance, mileage, v_type)
+    sorted_routes = sorted(recommend_list, key=lambda x: x[0])
+    return sorted_routes
+
+rf_regressor = joblib.load('newpicklefile1.pkl')
+recommend_list = []
 
 
 if __name__ == '__main__':
