@@ -5,8 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CARBON FORCE</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-brand {
+            font-size: xxx-large;
+            font-style: italic;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            width: 100%;
+            margin: 0;
+            padding: 10px 0;
+        }                                                                   
+        .dashboard-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+    </style>
 </head>
-<body>
+<body style="background-image: url('{{ url_for('static', filename='images/calculation.jpg') }}');">
+    <nav class="navbar fixed-top bg-body-tertiary" style="padding: 0px; background-color: rgb(233, 231, 223); color: black !important;">
+        <p class="navbar-brand" href="#">
+            Combat Carbon
+        </p>
+    </nav>
     <div class="container">
         <h1 class="mt-5 mb-4">Advice Dashboard</h1>
         <div class="row">
@@ -117,6 +139,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+<script src="https://mediafiles.botpress.cloud/e4eab57e-c8f1-4ee4-ab59-47d252916cb0/webchat/config.js" defer></script>
     
 </body>
 </html>
