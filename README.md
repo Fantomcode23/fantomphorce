@@ -11,11 +11,11 @@ make the bots to include generative AI features integrated with the ML model.
 <img width="950" alt="Screenshot 2024-05-17 at 4 04 41 AM" src="https://github.com/Fantomcode23/fantomphorce/assets/132202476/5df6b4dc-cade-4830-935f-265849fe25d0">
 
 # **What are we trying to solve?**
-Global warming is a direct problem and climate change too. Recent heat 
-waves in Bengaluru made 
-us deeply think about climate change and its impact. Hence, we decided to build a emission tracker 
+Global warming is a pressing issue of modern times, where increased emissions lead to climate change. Recent heat 
+waves in Bengaluru made us deeply think about climate change and its impact. Hence, we decided to build a emission tracker 
 that tracks carbon emissions and in turn helps us reduce our emissions and do our bit to 
-fight climate change. The main idea is that tracking can lead to more mindful consumption.
+fight climate change. The main idea is that tracking can lead to more mindful consumption and hence a reduction in emissions
+leading to lower overall emissions.
 
 # Technology Stack 
 ## Web application
@@ -38,32 +38,39 @@ fight climate change. The main idea is that tracking can lead to more mindful co
 - C++ <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/> </a>
 
 # How to get started?
-- do these things to run our applications
+On VScode, open our repo.
+Open the server.py file and python server.py
+or run the server.py under local host.
 
 # Problems with existing solutions
-- Lack of appropriate AI ML model integrations
-- Lack of dedicated chatbots
-- Lack of one-stop solution
+- Lack of appropriate AI ML model integrations.
+- Lack of dedicated chatbots.
+- Lack of one-stop solution.
 
 # Solution
-
+Our simple and intuitive Web based application tracks emissions and encourages to reduce the emissions.
 
 # Working and features
-- Sign in with user authentication using email OTP 
-- Dashboard showing emission calculator which calculates total carbon emissions
-- Graphical representation of the calculated emissions with respective categories
-- ChatBot answering the user's questions
-- Machine Learning model using Random Forest Regression model to predict emissions based on transport routes
-- Database stores the entered user data for future usage
+- Sign in with user authentication using email OTP .
+- Dashboard leading user to various features of the website
+- Emission calculator which calculates total carbon emissions.
+- Graphical representation of the calculated emissions with respective categories.
+- ChatBot answering the user's questions.
+- Machine Learning model using Random Forest Regression model to predict emissions based on transport routes.
+- Database stores the entered user data for future usage.
+- Advice page for suggestions under each category.
 
   
 # We ran into the following challenges
+- Integrating the flask based website with all the different components.
 - Finding suitable dataset and problems training ML model appropriately.
 - Integrating flask and the AI powered ML recomendation engine.
 
 # Scope for further enhancements
-- Improve UI
-- Introduce points based system to encourage users to stay motivated
+- Improve UI.
+- Introduce points based system to encourage users to stay motivated.
+- Additional features to enhance User Experience like integration with google maps API to get automatic
+  transport emissions.
 
 # Team
  ## [Karthik Prakash](https://github.com/kart2004)
