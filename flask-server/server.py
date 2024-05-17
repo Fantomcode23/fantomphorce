@@ -215,7 +215,6 @@ def process_and_sort_routes(routes_data):
     sorted_routes = sorted(recommend_list, key=lambda x: x[0])
     return sorted_routes
 
-# Load the trained model
 rf_regressor = joblib.load('newpicklefile1.pkl')
 recommend_list = []
 
