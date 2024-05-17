@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CARBON FORCE</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Custom CSS styles can be added here */
-    </style>
 </head>
 <body>
     <div class="container">
@@ -18,41 +15,34 @@
                     <div class="card-body">
                         <h5 class="card-title">Select an Option:</h5>
                         <ul class="list-unstyled">
-                            <li>
-                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Car Emissions')">Car Emissions</a>
+                            <li id="advice_button">
+                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Car Emissions')" style="background-color: #6c757d; ; border-color: #6c757d;">Car Emissions </a>
                             </li>
                             <li>
-                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Two Wheeler Emissions')">Two Wheeler Emissions</a>
+                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Two Wheeler Emissions')" style="background-color: #6c757d; color: #fff; border-color: #6c757d;">Two Wheeler Emissions</a>
                             </li>
                             <li>
-                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Air Travel Emissions')">Air Travel Emissions</a>
+                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Air Travel Emissions')" style="background-color: #6c757d; color: #fff; border-color: #6c757d;">Air Travel Emissions</a>
                             </li>
                             <li>
-                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Electricity Usage')">Electricity Usage</a>
+                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Electricity Usage')" style="background-color: #6c757d; color: #fff; border-color: #6c757d;">Electricity Usage</a>
                             </li>
                             <li>
-                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Diet Impact')">Diet Impact</a>
+                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Diet Impact')" style="background-color: #6c757d; color: #fff; border-color: #6c757d; shadow: #306637;">Diet Impact</a>
                             </li>
                             <li>
-                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Waste Generation')">Waste Generation</a>
+                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Waste Generation')" style="background-color: #6c757d; color: #fff; border-color: #6c757d;">Waste Generation</a>
                             </li>
                             <li>
-                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Total Emissions')">Total Emissions</a>
+                                <a href="#" class="btn btn-primary btn-block mb-2" onclick="showInput('Total Emissions')" style="background-color: #6c757d; color: #fff; border-color: #6c757d;">Total Emissions</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-8" style="padding-right: 15px">
-                <!-- Content for selected option will be displayed here -->
-                <div id="selectedOptionContent" class="shadow p-3 mb-5 bg-body-tertiary rounded">
-                    <!-- Placeholder content -->
+                <div id="selectedOptionContent" class="shadow p-3 mb-5 bg-body-tertiary rounded" style="background-color: #ccd1d5">
                     <h5 class="text-center">Select an option to view details.</h5>
-                </div>
-                <!-- Input box for user message -->
-                <div id="userInput" style="display: none;">
-                    <input type="text" id="userMessage" class="form-control" placeholder="Type your message...">
-                    <button class="btn btn-primary mt-2" onclick="sendMessageToBotpress()">Send</button>
                 </div>
             </div>
             <script>
@@ -124,8 +114,6 @@
                 <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
         </div>
     </div>
-
-    <!-- Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
